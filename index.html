@@ -1,100 +1,773 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="id">
 <head>
-    <title> wisata pantai ancol</title>
-    <link rel="icon" type="image/jpg" href="ancol.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Febe Meliani Fernando - Personal Portfolio</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icon CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Google Font - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Style & Theme Palette -->
+    <style>
+        :root {
+            /* Palette Color Definitions */
+            --base-color: #60241E;      /* Dark Warm Red/Brown */
+            --primary-color: #95271D;   /* Deep Red */
+            --secondary-color: #B34A44; /* Muted Red/Coral */
+            --accent-color: #E77B49;    /* Warm Orange */
+            --light-text: #FDFBF7;      /* Warm Light Cream for readability */
+            --muted-text: #E8D3CF;      /* High contrast light muted text */
+            --card-bg: rgba(179, 74, 68, 0.35);
+            --card-border: rgba(231, 123, 73, 0.4);
+        }
+
+        /* General Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--base-color);
+            color: var(--light-text);
+            overflow-x: hidden;
+        }
+
+        /* Typography Helper Classes */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--light-text);
+        }
+
+        .text-accent {
+            color: var(--accent-color) !important;
+        }
+
+        .text-muted-custom {
+            color: var(--muted-text) !important;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2.5rem;
+            font-size: 2.25rem;
+            color: var(--light-text);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background-color: var(--accent-color);
+            bottom: -8px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        /* Navbar Styling */
+        .navbar-custom {
+            background-color: rgba(149, 39, 29, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-custom .navbar-brand {
+            color: var(--light-text);
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .navbar-custom .nav-link {
+            color: var(--light-text);
+            font-weight: 500;
+            margin: 0 5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            padding-top: 100px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--base-color) 0%, var(--primary-color) 100%);
+        }
+
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease;
+        }
+
+        .profile-img-container:hover .profile-img {
+            transform: scale(1.03) rotate(2deg);
+        }
+
+        /* Custom Bounce Keyframe Animation */
+        @keyframes pulseBounce {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 5px 15px rgba(231, 123, 73, 0.4);
+            }
+            50% {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 25px rgba(231, 123, 73, 0.7);
+            }
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            transition: all 0.3s ease;
+            animation: pulseBounce 2.5s infinite;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-accent:hover {
+            background-color: #d66a38;
+            color: #ffffff;
+            transform: translateY(-3px) scale(1.02);
+            animation: none;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--accent-color);
+            color: var(--light-text);
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Glassmorphic Custom Cards */
+        .custom-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+            transition: all 0.35s ease;
+            height: 100%;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.45);
+            border-color: var(--accent-color);
+            background: rgba(179, 74, 68, 0.5);
+        }
+
+        /* Hobbies & Ekskul Badges */
+        .hobby-icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .custom-card:hover .hobby-icon-box {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            transform: rotate(360deg);
+        }
+
+        .badge-ekskul {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: 1px solid var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .badge-ekskul:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.08);
+        }
+
+        /* Achievements / Timeline Cards */
+        .achievement-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-right: 15px;
+        }
+
+        /* Portfolio Cards & Hover Effects */
+        .portfolio-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(96, 36, 30, 0.95), rgba(149, 39, 29, 0.7));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            padding: 20px;
+            text-align: center;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.12);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* Contact Section Form Controls */
+        .form-control-custom {
+            background-color: rgba(60, 18, 15, 0.7);
+            border: 1px solid var(--secondary-color);
+            color: var(--light-text);
+            border-radius: 10px;
+            padding: 12px 16px;
+        }
+
+        .form-control-custom:focus {
+            background-color: rgba(60, 18, 15, 0.9);
+            border-color: var(--accent-color);
+            color: var(--light-text);
+            box-shadow: 0 0 0 0.25rem rgba(231, 123, 73, 0.3);
+        }
+
+        .form-control-custom::placeholder {
+            color: var(--muted-text);
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-top: 1px solid rgba(231, 123, 73, 0.2);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile responsiveness adjustments */
+        @media (max-width: 768px) {
+            #home {
+                padding-top: 120px;
+                text-align: center;
+            }
+            .profile-img {
+                width: 220px;
+                height: 220px;
+                margin-top: 20px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <img src="ancol.jpg" alt="image" width="400" height="200">
-    <img src="ancoll.webp" alt="image" width="400" height="200">
 
-    <h1> Ancol, Destinasi Wisata Lengkap di Jakarta! </h1>
-    <p> Taman Impian Jaya Ancol merupakan salah satu kawasan wisata terbesar dan terkenal di Jakarta. Ancol memiliki berbagai macam tempat wisata yang menarik dan cocok dikunjungi oleh masyarakat dari berbagai usia. Kawasan ini menawarkan suasana rekreasi yang lengkap, mulai dari wisata pantai hingga berbagai wahana hiburan. <br>
-    <p>Salah satu daya tarik utama Ancol adalah banyaknya pilihan tempat wisata yang tersedia dalam satu kawasan. Pengunjung dapat menikmati suasana pantai, bermain berbagai wahana, melihat kehidupan laut, serta mengunjungi tempat-tempat hiburan lainnya. Dengan banyaknya pilihan tersebut, pengunjung dapat melakukan berbagai aktivitas tanpa harus berpindah ke kawasan wisata yang jauh.<br></p>
-    <p>Ancol juga memiliki beberapa kelebihan yang membuatnya menjadi tempat rekreasi yang populer. Lokasinya berada di Jakarta sehingga relatif mudah dijangkau, fasilitasnya cukup lengkap, dan tempatnya cocok untuk berlibur bersama keluarga maupun teman. Selain untuk hiburan, beberapa tempat di Ancol juga dapat memberikan pengalaman edukatif dan menjadi sarana untuk menikmati waktu bersama orang-orang terdekat.</p>
-    <ol>
-        <li> Banyak pilihan wisata, mulai dari pantai, wahana permainan, hingga tempat edukasi.</li>
-        <li> Cocok untuk semua usia, baik anak-anak, remaja, maupun orang dewasa.</li>
-        <li> Lokasi mudah dijangkau karena berada di kawasan Jakarta.</li>
-        <li> Bisa menjadi tempat rekreasi keluarga dengan berbagai aktivitas dalam satu kawasan.</li>
-        <li> Memiliki pemandangan menarik, terutama area pantai dan ruang terbuka.</li>
-        <li> Tersedia banyak fasilitas, seperti tempat makan, area bermain, dan tempat untuk bersantai.</li>
-    </ol>
-    <a href="https://www.ancol.com/home"> Klik untuk membuka ancol page!</a>
+    <!-- NAVBAR NAVIGATION -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fa-solid fa-graduation-cap me-2 text-accent"></i>Febe Meliani
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <title> Harga Khusus Tiket Wisata Ancol (affordable loh!) </title>
-    <table width="500px" height="150px" border="1" cellpadding="10" cellspacing="0" style="text-align: center; color: maroon; border-color: rgb(70, 0, 0); background-color:rgb(255, 184, 150);">
-        <thead>
-            <tr>
-                <td> Unit Rekreasi </td>
-                <th> 10.10 Flash Sale (Sold Out) </th>
-                <th> Early Bird 1 (Almost Sold Out) </th>
-                <th> Early Bird 2 </th>
-                <th> Harga Normal </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th> Dufan </th>
-                <td> ~Rp.150.000~ </td>
-                <td> Rp.189.000 </td>
-                <td> Rp.299.000 </td>
-                <td> Rp.400.000 </td>
-            </tr>
-            <tr>
-                <th> Sea World Ancol </th>
-                <td> Rp.67.500 </td>
-                <td> Rp.82.500 </td>
-                <td> Rp.115.000 </td>
-                <td> Rp.175.000 </td>
-            </tr>
-            <tr>
-                <th> Samudra </th>
-                <td> Rp.60.000 </td>
-                <td> Rp.70.000 </td>
-                <td> Rp.115.000 </td>
-                <td> Rp.175.000 </td>
-            </tr>
-            <tr>
-                <th> Atlantis </th>
-                <td> Rp.50.000 </td>
-                <td> Rp.60.000 </td>
-                <td> Rp.105.000 </td>
-                <td> Rp.150.000 </td>
-            </tr>
-            <tr>
-                <th> Jakarta Bird Land </th>
-                <td> Rp.30.000 </td>
-                <td> Rp.40.000 </td>
-                <td> Rp.50.000 </td>
-                <td> Rp.60.000 </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <td colspan="5"> Pembelian hanya di ancol.com </td>
-        </tfoot>
-    </table>
-    <form style="display:block; background-color: rgb(163, 68, 68); width: 300px; padding: 10px">
-        <div style="margin: 10px">
-            <label> username </label>
-            <input type="text">
+    <!-- SECTION 1: HOME (HERO SECTION) -->
+    <section id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-lg-start text-center">
+                    <h1 class="display-4 text-light mb-2">Halo, Saya <span class="text-accent">Febe Meliani Fernando</span></h1>
+                    <h3 class="h4 text-muted-custom mb-3">Grade 12 Student | Science, Tech & Creative Art Enthusiast</h3>
+                    <p class="lead text-muted-custom mb-4">
+                        A girl with her creative mind, science enthusiast, artist, and aspiring tech innovator.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-lg-start justify-content-center">
+                        <a href="#portfolio" class="btn-accent">Explore Portfolio <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        <a href="#contact" class="btn-outline-custom">Contact Me <i class="fa-solid fa-paper-plane ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center mt-5 mt-lg-0">
+                    <div class="profile-img-container">
+                        <!-- Ganti URL foto profil di sini -->
+                        <img src="WhatsApp Image 2026-10-23 at 17.39.02 (2).jpeg" alt="Febe Meliani Fernando" class="profile-img">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="margin: 10px">
-            <label> password </label>
-            <input type="password">
+    </section>
+
+    <!-- SECTION 2: ABOUT ME -->
+    <section id="about" class="py-5" style="background-color: rgba(0,0,0,0.15);">
+        <div class="container py-4">
+            <div class="text-center">
+                <h2 class="section-title">About Me</h2>
+            </div>
+            
+            <div class="row g-4 mt-2">
+                <!-- Academic Background -->
+                <div class="col-lg-6">
+                    <div class="custom-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fa-solid fa-school text-accent fs-2 me-3"></i>
+                            <h3 class="h4 mb-0">Latar Belakang Pendidikan</h3>
+                        </div>
+                        <p class="text-muted-custom">
+                            Saat ini saya adalah murid kelas 12 di <strong>SMA Kristen Kalam Kudus Malang</strong> yang menempuh kurikulum Paket A dengan mata pelajaran peminatan mendalam:
+                        </p>
+                        <div class="row g-2 my-2">
+                            <div class="col-6"><div class="p-2 border rounded border-secondary text-center"><i class="fa-solid fa-dna text-accent me-1"></i> Biologi</div></div>
+                            <div class="col-6"><div class="p-2 border rounded border-secondary text-center"><i class="fa-solid fa-atom text-accent me-1"></i> Fisika</div></div>
+                            <div class="col-6"><div class="p-2 border rounded border-secondary text-center"><i class="fa-solid fa-flask text-accent me-1"></i> Kimia</div></div>
+                            <div class="col-6"><div class="p-2 border rounded border-secondary text-center"><i class="fa-solid fa-language text-accent me-1"></i> B. Inggris Lanjut</div></div>
+                        </div>
+                        <p class="mt-3">
+                            <a href="https://skkkmalang.sch.id/" target="_blank" class="text-accent text-decoration-none fw-semibold">
+                                <i class="fa-solid fa-globe me-1"></i> Tekan untuk Kunjungi Website Sekolah SKKK Malang <i class="fa-solid fa-arrow-up-right-from-square fs-6"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hobbies & Extracurriculars -->
+                <div class="col-lg-6">
+                    <div class="custom-card">
+                        <h3 class="h4 mb-3"><i class="fa-solid fa-heart text-accent me-2"></i>Hobi & Minat</h3>
+                        <div class="row g-3 mb-4">
+                            <div class="col-6 col-sm-3 text-center">
+                                <div class="hobby-icon-box mx-auto"><i class="fa-solid fa-utensils"></i></div>
+                                <span class="fw-semibold">Memasak</span>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <div class="hobby-icon-box mx-auto"><i class="fa-solid fa-palette"></i></div>
+                                <span class="fw-semibold">Menggambar</span>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <div class="hobby-icon-box mx-auto"><i class="fa-solid fa-music"></i></div>
+                                <span class="fw-semibold">Menyanyi</span>
+                            </div>
+                            <div class="col-6 col-sm-3 text-center">
+                                <div class="hobby-icon-box mx-auto"><i class="fa-solid fa-pen-nib"></i></div>
+                                <span class="fw-semibold">Desain</span>
+                            </div>
+                        </div>
+
+                        <h4 class="h5 mb-2"><i class="fa-solid fa-users text-accent me-2"></i>Pengalaman Ekstrakurikuler</h4>
+                        <div>
+                            <span class="badge-ekskul"><i class="fa-solid fa-basketball me-1"></i> SMP: Basket</span>
+                            <span class="badge-ekskul"><i class="fa-solid fa-newspaper me-1"></i> Kelas 10: Jurnalistik</span>
+                            <span class="badge-ekskul"><i class="fa-solid fa-kitchen-set me-1"></i> Kelas 11: Cooking</span>
+                            <span class="badge-ekskul"><i class="fa-solid fa-code me-1"></i> Kelas 12: Coding</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="margin: 10px">
-            <a href="#"> forgot password? </a>
-            <label>
-                <input type="checkbox">
-                remember me
-            </label>
+    </section>
+
+    <!-- SECTION 3: EXPERIENCE & ACHIEVEMENTS -->
+    <section id="experience" class="py-5">
+        <div class="container py-4">
+            <div class="text-center">
+                <h2 class="section-title">Experience & Achievements</h2>
+            </div>
+
+            <div class="row g-4 mt-3">
+                <!-- Academic Competition Medals -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="custom-card text-center">
+                        <div class="achievement-icon text-warning mb-2"><i class="fa-solid fa-trophy"></i></div>
+                        <h4 class="h5">Sigma Sains Competition</h4>
+                        <p class="text-accent fw-bold mb-1">Medali Emas</p>
+                        <p class="small text-muted-custom">Lomba Kimia tingkat Nasional</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="custom-card text-center">
+                        <div class="achievement-icon text-secondary mb-2"><i class="fa-solid fa-medal"></i></div>
+                        <h4 class="h5">Olimpiade Sains Pelajar</h4>
+                        <p class="text-accent fw-bold mb-1">Medali Perak</p>
+                        <p class="small text-muted-custom">Lomba Matematika</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="custom-card text-center">
+                        <div class="achievement-icon me-0 mb-2" style="color: #cd7f32;"><i class="fa-solid fa-award"></i></div>
+                        <h4 class="h5">Sigma Sains Competition</h4>
+                        <p class="text-accent fw-bold mb-1">Medali Perunggu</p>
+                        <p class="small text-muted-custom">Lomba Fisika tingkat Nasional</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="custom-card text-center">
+                        <div class="achievement-icon me-0 mb-2" style="color: #E77B49;"><i class="fa-solid fa-spell-check"></i></div>
+                        <h4 class="h5">SKKK Pijar Kreasi</h4>
+                        <p class="text-accent fw-bold mb-1">Juara 2</p>
+                        <p class="small text-muted-custom">Lomba Spelling Bee Sekolah</p>
+                    </div>
+                </div>
+
+                <!-- Non-Academic & Course Details -->
+                <div class="col-lg-6">
+                    <div class="custom-card">
+                        <h4 class="h5 mb-3 text-accent"><i class="fa-solid fa-brain me-2"></i>Les Sempoa & Asisten Pengajar</h4>
+                        <p class="text-muted-custom">
+                            Sering mengikuti berbagai kompetisi sempoa dengan meraih prestasi mulai dari <strong>Juara Harapan 3 hingga Juara Umum 1</strong>.
+                        </p>
+                        <div class="p-3 rounded bg-dark bg-opacity-25 border border-secondary mb-2">
+                            <i class="fa-solid fa-chalkboard-user text-accent me-2"></i> <strong>Asisten Pengajar Sempoa:</strong>
+                            <p class="mb-0 small text-muted-custom mt-1">TC Nangka & TC Yos Sudarso, Pekanbaru.</p>
+                        </div>
+                        <div class="p-3 rounded bg-dark bg-opacity-25 border border-secondary">
+                            <i class="fa-solid fa-book-open-reader text-accent me-2"></i> <strong>Asisten Pengajar Bimbel:</strong>
+                            <p class="mb-0 small text-muted-custom mt-1">TC Nangka, TC Yos Sudarso, & TC Rumbai Bukit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="custom-card">
+                        <h4 class="h5 mb-3 text-accent"><i class="fa-solid fa-shapes me-2"></i>Seni, Robotik & Performance</h4>
+                        <ul class="list-unstyled text-muted-custom mb-0">
+                            <li class="mb-3">
+                                <i class="fa-solid fa-check text-accent me-2"></i><strong>Les Ballet:</strong> Berpengalaman beberapa kali tampil dalam pertunjukan panggung dan menerima penghargaan performance.
+                            </li>
+                            <li class="mb-3">
+                                <i class="fa-solid fa-check text-accent me-2"></i><strong>Les Robotics EV3:</strong> Aktif mengikuti kompetisi robotik skala online maupun offline.
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check text-accent me-2"></i><strong>Les U-ART:</strong> Mengasah skill menggambar, ilustrasi, dan keahlian seni visual secara mendalam.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button style="width: 100px; margin: 10px; position:relative; left: 140px"> Login </button>
-    </form>
+    </section>
+
+    <!-- SECTION 4: PORTFOLIO GALLERY -->
+    <section id="portfolio" class="py-5" style="background-color: rgba(0,0,0,0.15);">
+        <div class="container py-4">
+            <div class="text-center">
+                <h2 class="section-title">Portfolio & Karya</h2>
+            </div>
+
+            <div class="row g-4 mt-3">
+                <!-- Portfolio Item 1 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="portfolio-item">
+                        <!-- Ganti URL foto karya/proyek di sini -->
+                        <img src="WhatsApp Image 2026-10-23 at 17.39.02 (1).jpeg" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="portfolio-item">
+                        <!-- Ganti URL foto karya/proyek di sini -->
+                        <img src="WhatsApp Image 2026-10-23 at 17.39.01.jpeg"  class="portfolio-img">
+                        <div class="portfolio-overlay">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="portfolio-item">
+                        <!-- Ganti URL foto karya/proyek di sini -->
+                        <img src="WhatsApp Image 2026-10-23 at 17.39.02.jpeg" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="col-md-2 col-sm-10">
+                    <div class="portfolio-item">
+                        <!-- Ganti URL foto karya/proyek di sini -->
+                        <img src="WhatsApp Image 2026-10-23 at 17.48.14.jpeg" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="portfolio-item">
+                        <!-- Ganti URL foto karya/proyek di sini -->
+                        <img src="WhatsApp Image 2026-10-23 at 17.39.01 (1).jpeg" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="portfolio-item">
+                        <!-- Ganti URL foto karya/proyek di sini -->
+                        <img src="WhatsApp Image 2026-10-23 at 17.48.13.jpeg" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-10">
+                    <div class="portfolio-item">
+                        <!-- Ganti URL foto karya/proyek di sini -->
+                        <img src="WhatsApp Image 2026-10-23 at 17.48.13 (1).jpeg" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CONTACT & FOOTER -->
+    <section id="contact" class="py-5">
+        <div class="container py-4">
+            <div class="text-center">
+                <h2 class="section-title">Contact Me</h2>
+                <p class="text-muted-custom">Ingin berkolaborasi atau berdiskusi? Silakan hubungi saya melalui form atau kontak di bawah ini.</p>
+            </div>
+
+            <div class="row g-4 mt-3">
+                <!-- Direct Contact Details -->
+                <div class="col-lg-5">
+                    <div class="custom-card">
+                        <h3 class="h4 mb-4">Informasi Kontak</h3>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="social-link"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <span class="d-block text-muted-custom small">Email Professional</span>
+                                <a href="mailto:febemeliani.djiauw@gmail.com" class="text-light text-decoration-none">febemeliani.djiauw@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="social-link"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <span class="d-block text-muted-custom small">Nomor Telepon / WA</span>
+                                <a href="tel:081379997" class="text-light text-decoration-none">081379997</a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="social-link"><i class="fa-brands fa-instagram"></i></div>
+                            <div>
+                                <span class="d-block text-muted-custom small">Instagram</span>
+                                <a href="https://instagram.com/n4ndo._glitch" target="_blank" class="text-light text-decoration-none">@n4ndo._glitch</a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="social-link"><i class="fa-brands fa-github"></i></div>
+                            <div>
+                                <span class="d-block text-muted-custom small">GitHub Profile</span>
+                                <a href="https://github.com/febemelianidjiauw-prog/febe" target="_blank" class="text-light text-decoration-none">febemelianidjiauw-prog/febe</a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="social-link"><i class="fa-solid fa-school"></i></div>
+                            <div>
+                                <span class="d-block text-muted-custom small">Sekolah</span>
+                                <a href="https://skkkmalang.sch.id/" target="_blank" class="text-light text-decoration-none">SMA Kristen Kalam Kudus Malang</a>
+                            </div>
+                        </div>
+
+                        <hr class="border-secondary">
+
+                        <div class="mt-3">
+                            <h5 class="h6 text-muted-custom mb-3">Social Media Links:</h5>
+                            <a href="https://instagram.com/n4ndo._glitch" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://github.com/febemelianidjiauw-prog/febe" target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
+                            <a href="mailto:febemeliani.djiauw@gmail.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Interactive Form -->
+                <div class="col-lg-7">
+                    <div class="custom-card">
+                        <h3 class="h4 mb-4">Kirim Pesan</h3>
+                        <form onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda berhasil terkirim.');">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-muted-custom">Nama Lengkap</label>
+                                    <input type="text" class="form-control form-control-custom" placeholder="Masukkan nama Anda" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-muted-custom">Alamat Email</label>
+                                    <input type="email" class="form-control form-control-custom" placeholder="nama@email.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-muted-custom">Subjek Pesan</label>
+                                    <input type="text" class="form-control form-control-custom" placeholder="Subjek" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-muted-custom">Pesan</label>
+                                    <textarea class="form-control form-control-custom" rows="4" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn-accent w-100">Kirim Pesan Sekarang <i class="fa-solid fa-paper-plane ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; 2026 <strong>Febe Meliani Fernando</strong>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript Active Link Highlight on Scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>
